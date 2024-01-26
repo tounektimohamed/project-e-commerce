@@ -1,0 +1,38 @@
+/* Navbar.module.css */
+.navbarContainer{
+    display: flex;
+    background-color: rgb(33, 33, 33);
+    justify-content: space-between;
+    padding: 1.2rem;
+    user-select: none;
+    color: white;
+}
+
+.navItemsLeft{
+    display: flex;
+    gap: 2rem;
+}
+
+.navItemsRight{
+    display: flex;
+    gap: 2rem;
+}
+
+.navItem{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.navItem p{
+    font-size: large;
+    font-weight: 600;
+}
+
+.navItem img{
+    height: 2rem;
+}
+
+.navItem:hover{
+    color: lightgreen;
+}
