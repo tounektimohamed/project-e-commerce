@@ -1,20 +1,18 @@
 // Imports
-import { useState } from "react";
 import styles from "./CartItem.module.css";
 import ReactStars from "react-rating-stars-component";
 import { useDispatch } from "react-redux";
-import { decreaseQuantityAsync, increaseQuantityAsync, removeCartItemAsync, removeFromCartAsync } from "../../Redux/Reducers/cartReducer";
+import { decreaseQuantityAsync, increaseQuantityAsync, removeCartItemAsync } from "../../Redux/Reducers/cartReducer";
 
 export default function CartItem({ product, qty, id }) {
     // States
-    const [visible, setVisible] = useState(false);
     const dispatch = useDispatch();
 
     // Returning JSX
     return (
         <>
             {/* Product Container */}
-            <div className={styles.productContainer} onMouseOver={() => setVisible(true)} onMouseOut={() => setVisible(false)}>
+            <div className={styles.productContainer}>
                 {/* Image */}
                 <img src={product.thumbnail} alt="img" className={styles.thumbnail} />
                 {/* Title */}

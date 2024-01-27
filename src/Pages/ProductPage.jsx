@@ -2,11 +2,11 @@
 import styles from "./ProductPage.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { fetchProductById, fetchProductsAsync, productsState } from "../Redux/Reducers/productReducer";
+import { fetchProductById, productsState } from "../Redux/Reducers/productReducer";
 import ReactStars from "react-rating-stars-component";
 import { useEffect, useState } from "react";
 import HashLoader from "react-spinners/HashLoader";
-import { addToCartAsync, cartState, fetchCartItemsAsync, isItemInCart } from "../Redux/Reducers/cartReducer";
+import { addToCartAsync, cartState } from "../Redux/Reducers/cartReducer";
 
 export default function ProductPage() {
     // States

@@ -20,6 +20,7 @@ export default function CartPage() {
     // Returning JSX
     return (
         <>
+            {/* Conditionally rendring laoder and cart page */}
             {cartLoading ? <div className={styles.loaderContainer} >
                 <HashLoader size={100} color={"#e44d26"} />
             </div > :

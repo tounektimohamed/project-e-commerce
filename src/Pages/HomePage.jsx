@@ -2,7 +2,7 @@
 // Imports
 import styles from "./HomePage.module.css";
 import { HashLoader } from "react-spinners";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProductsAsync, productsState, sortProducts } from "../Redux/Reducers/productReducer";
 import ProductsList from "../Components/Products List/ProductsList";
@@ -10,8 +10,7 @@ import Form from "../Components/Form/Form";
 
 export default function HomePage() {
     // States
-    let [color, setColor] = useState("#3498db");
-    const { productsLoading, formVisible, sortPrice} = useSelector(productsState);
+    const { productsLoading, formVisible, sortPrice } = useSelector(productsState);
     const dispatch = useDispatch();
 
     // Side effects
@@ -26,7 +25,7 @@ export default function HomePage() {
             {/* Conditionally rendring loader and home page data here */}
             {productsLoading ?
                 <div className={styles.loaderContainer}>
-                    <HashLoader size={100} color={color} />
+                    <HashLoader size={100} color={"#3498db"} />
                 </div> :
                 <div className={styles.homepageContainer}>
                     {formVisible && <Form />}
