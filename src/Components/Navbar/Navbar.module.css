@@ -1,39 +1,54 @@
 /* Navbar.module.css */
-.navbarContainer{
+.navbarContainer {
+    width: 100%;
+    position: fixed;
     display: flex;
     background-color: rgb(33, 33, 33);
     justify-content: space-between;
     padding: 1.2rem 2rem;
     user-select: none;
     color: white;
-}
-
-.navItemsLeft{
+    z-index: 1000;
+  }
+  
+  .navItemsLeft {
     display: flex;
     gap: 2rem;
-}
-
-.navItemsRight{
+    align-items: center; 
+  }
+  
+  .navItemsRight {
     display: flex;
     gap: 2rem;
-}
-
-.navItem{
+  }
+  
+  .navItem {
     display: flex;
     align-items: center;
     gap: 8px;
     transition: all 0.2s ease-in-out;
-}
-
-.navItem p{
+  }
+  
+  .navItem p {
     font-size: large;
     font-weight: 600;
-}
-
-.navItem img{
+  }
+  
+  .navItem img {
     height: 2rem;
-}
-
-.navItem:hover{
+  }
+  
+  /* Style for the NavLink */
+  .navLink {
+    text-decoration: none;
+    color: white; 
+  }
+  
+  .navItem:hover {
     color: lightgreen;
-}
+  }
+  
+  .navLink:hover {
+    color: lightgreen; 
+  }
+  

@@ -1,6 +1,6 @@
 // Functional Component for the Navbar
 // Imports
-import { Outlet } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
 import styles from "./Navbar.module.css";
 
 export default function Navbar() {
@@ -9,16 +9,24 @@ export default function Navbar() {
         <>
             <div className={styles.navbarContainer}>
                 <div className={styles.navItemsLeft}>
-                    <div className={styles.navItem}>
-                        <p>eCommerce</p>
-                    </div>
-                    <div className={styles.navItem}>
-                        <p>Products</p>
-                    </div>
-                    <div className={styles.navItem}>
-                        <p>Add a product</p>
-                        <img src="https://cdn-icons-png.flaticon.com/128/9447/9447856.png" alt="img" className={styles.AddProductImg} />
-                    </div>
+                    <NavLink to={"/"} className={styles.navLink}>
+                        <div className={styles.navItem}>
+                            <p>eCommerce</p>
+                        </div>
+                    </NavLink>
+
+                    <NavLink to={"/"} className={styles.navLink}>
+                        <div className={styles.navItem}>
+                            <p>Products</p>
+                        </div>
+                    </NavLink>
+
+                    <NavLink to={"add-product"} className={styles.navLink}>
+                        <div className={styles.navItem}>
+                            <p>Add a product</p>
+                            <img src="https://cdn-icons-png.flaticon.com/128/9447/9447856.png" alt="img" className={styles.AddProductImg} />
+                        </div>
+                    </NavLink>
                 </div>
 
                 <div className={styles.navItemsRight}>
@@ -33,7 +41,7 @@ export default function Navbar() {
                 </div>
             </div>
 
-            {/* Rendring Childrens */}
+            {/* Rendering Children */}
             <Outlet />
         </>
     )

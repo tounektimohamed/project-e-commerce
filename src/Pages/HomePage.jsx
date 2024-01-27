@@ -6,19 +6,19 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProductsAsync, productsState, sortProducts } from "../Redux/Reducers/productReducer";
 import ProductsList from "../Components/Products List/ProductsList";
-
+import Form from "../Components/Form/Form";
 
 export default function HomePage() {
     // States
     let [color, setColor] = useState("#3498db");
-    const { productsLoading } = useSelector(productsState);
+    const { productsLoading, formVisible } = useSelector(productsState);
     const dispatch = useDispatch();
 
     // Side effects
     useEffect(() => {
         // Dispacthing async thunks
         dispatch(fetchProductsAsync());
-    }, []);
+    }, [dispatch]);
 
     // Returning JSX
     return (
@@ -29,6 +29,7 @@ export default function HomePage() {
                     <HashLoader size={100} color={color} />
                 </div> :
                 <div className={styles.homepageContainer}>
+                    {formVisible && <Form />}
                     {/* Price sorting button */}
                     <button type="button" className={styles.sortButton} onClick={() => dispatch(sortProducts())}>Sort By Price</button>
                     <ProductsList />

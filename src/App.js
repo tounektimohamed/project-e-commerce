@@ -8,6 +8,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import store from "./Redux/Store";
 import { Provider } from "react-redux";
+import AddProductPage from "./Pages/AddProductPage";
 
 function App() {
   // Creating router here
@@ -15,7 +16,10 @@ function App() {
     {
       path: "/",
       element: <Navbar />,
-      children: [{ index: true, element: <HomePage /> }],
+      children: [
+        { index: true, element: <HomePage /> },
+        { path: "add-product", element: <AddProductPage /> },
+      ],
     },
   ]);
 
