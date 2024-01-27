@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import styles from "./Form.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { addProductAsync, formToggle, productsState, updateProductAsync } from "../../Redux/Reducers/productReducer";
+import { toast } from "react-toastify";
 
 export default function Form() {
     // States
@@ -34,9 +35,16 @@ export default function Form() {
     // Event Handler
     const onSubmit = (event) => {
         event.preventDefault();
+        // Validation if any field is empty
+        if (!title || !description || !price || !rating) {
+            return toast.error("Please Enter All Fields!");
+        }
+
+        // If update the dispatching update async thunk.
         if (update) {
             dispatch(updateProductAsync({ id: productToUpdate.id, updatedProduct: { title, description, price, rating } }));
         }
+        // Else Add async thunk is dispatching here
         else {
             dispatch(addProductAsync({ product: { title, description, price, rating } }))
         }
@@ -61,6 +69,7 @@ export default function Form() {
                     name="name"
                     placeholder="Enter name"
                     value={title}
+                    required
                     onChange={(event) => setTitle(event.target.value)}
                 />
 
@@ -72,6 +81,7 @@ export default function Form() {
                     name="description"
                     placeholder="Enter description"
                     value={description}
+                    required
                     onChange={(event) => setDescription(event.target.value)}
                 />
 
@@ -82,6 +92,7 @@ export default function Form() {
                     id="price"
                     name="price"
                     placeholder="Enter price"
+                    required
                     value={price} onChange={(event) => setPrice(event.target.value)}
                 />
 
@@ -93,6 +104,7 @@ export default function Form() {
                     name="rating"
                     placeholder="Enter rating"
                     value={rating}
+                    required
                     onChange={(event) => setRating(event.target.value)}
                 />
 

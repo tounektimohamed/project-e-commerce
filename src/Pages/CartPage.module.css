@@ -1,0 +1,22 @@
+/* CartPage.module.css */
+.loaderContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.noItemsHeading {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-top: 20px;
+    color: #31363D;
+}
+
+.CartPageContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+

@@ -4,15 +4,24 @@ import styles from "./ProductCard.module.css";
 import ReactStars from "react-rating-stars-component";
 import { useDispatch } from "react-redux";
 import { deleteProductAsync, setUpdate } from "../../Redux/Reducers/productReducer";
+import { Link } from "react-router-dom";
+import { addToCartAsync } from "../../Redux/Reducers/cartReducer";
 
 export default function Product({ product }) {
     // States
     const [visible, setVisible] = useState(false);
     const dispatch = useDispatch();
 
+    // Actions
+    const addToCart = () => {
+        // Dispatching action
+        dispatch(addToCartAsync(product))
+    }
+
     // Returning JSX
     return (
         <>
+
             {/* Product Container */}
             <div className={styles.productContainer} onMouseOver={() => setVisible(true)} onMouseOut={() => setVisible(false)}>
                 {/* Image */}
@@ -32,8 +41,14 @@ export default function Product({ product }) {
                     isHalf={true}
                     edit={false}
                 />
+                {/* More Info Button */}
+                <Link to={`products/${product.id}`} className={styles.link}>
+                    <button type="button" className={styles.moreInfoBtn}>
+                        More Info
+                    </button>
+                </Link>
                 {/* Add Cart Button */}
-                <button type="button" className={styles.addToCartBtn}>Add To Cart</button>
+                <button type="button" className={styles.addToCartBtn} onClick={() => addToCart()}>Add To Cart</button>
                 {/* Delete and update icons container */}
                 {visible &&
                     <div className={styles.iconContainer}>
@@ -54,7 +69,8 @@ export default function Product({ product }) {
                         />
                     </div>
                 }
-            </div>
+            </div >
+
         </>
     )
 }

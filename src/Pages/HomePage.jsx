@@ -11,7 +11,7 @@ import Form from "../Components/Form/Form";
 export default function HomePage() {
     // States
     let [color, setColor] = useState("#3498db");
-    const { productsLoading, formVisible } = useSelector(productsState);
+    const { productsLoading, formVisible, sortPrice} = useSelector(productsState);
     const dispatch = useDispatch();
 
     // Side effects
@@ -31,7 +31,7 @@ export default function HomePage() {
                 <div className={styles.homepageContainer}>
                     {formVisible && <Form />}
                     {/* Price sorting button */}
-                    <button type="button" className={styles.sortButton} onClick={() => dispatch(sortProducts())}>Sort By Price</button>
+                    <button type="button" className={styles.sortButton} onClick={() => dispatch(sortProducts())}>{sortPrice ? <img className={styles.close} src="https://cdn-icons-png.flaticon.com/128/1828/1828843.png" alt="img" /> : "Sort By Price"}</button>
                     <ProductsList />
                 </div>
             }

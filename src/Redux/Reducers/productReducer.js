@@ -108,12 +108,15 @@ const INITIAL_STATE = {
   formVisible: false,
   update: false,
   productToUpdate: {},
+  selectedProduct: {},
+  productLoading: true,
 };
 
 // Slice
 const productSlice = createSlice({
   name: "Products",
   initialState: INITIAL_STATE,
+
   // Reducers
   reducers: {
     sortProducts: (state, action) => {
@@ -136,7 +139,13 @@ const productSlice = createSlice({
       state.update = true;
       state.productToUpdate = action.payload;
     },
+    fetchProductById: (state, action) => {
+      const productId = action.payload;  // Assuming action.payload is the product ID
+      state.selectedProduct = state.products.find((product) => product.id.toString() === productId.toString());
+      state.productLoading = false;
+    },
   },
+
   // Extra Reducers
   extraReducers: (builder) => {
     // Fetch Success
@@ -222,8 +231,13 @@ const productSlice = createSlice({
 export const productReducer = productSlice.reducer;
 
 // Extracting Actions
-export const { sortProducts, formToggle, setUpdate, formClose } =
-  productSlice.actions;
+export const {
+  sortProducts,
+  formToggle,
+  setUpdate,
+  formClose,
+  fetchProductById,
+} = productSlice.actions;
 
 // Extracting state
 export const productsState = (state) => state.productReducer;

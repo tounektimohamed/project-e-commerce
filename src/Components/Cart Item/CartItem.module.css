@@ -48,10 +48,10 @@
     color: #28C8A4;
 }
 
-.addToCartBtn {
+.removeFromCartBtn {
     width: 100%;
     height: 2.6rem;
-    background-color: #28C8A4;
+    background-color: #ff0000;
     color: #fff;
     border: none;
     cursor: pointer;
@@ -60,10 +60,10 @@
     font-weight: 700;
 }
 
-.addToCartBtn:hover {
+.removeFromCartBtn:hover {
     background-color: white;
-    color: #28C8A4;
-    border: 2px solid #28C8A4;
+    color: #ff0000;
+    border: 2px solid #ff0000;
 }
 
 .icon {
@@ -85,46 +85,23 @@
     transform: scale(1.2);
 }
 
-.link {
-    text-decoration: none;
+.priceAndQtyContainer{
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
 }
 
-.moreInfoBtn {
-    background-color: #4285f4;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    position: relative;
-    overflow: hidden;
+.qtyContainer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.moreInfoBtn:hover {
-    background-color: #2d5aa5;
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+.qtyContainer p{
+    margin: 0 1rem;
+    font-size: 1.8rem;
 }
 
-.moreInfoBtn:after {
-    content: "";
-    background: #fff;
-    display: block;
-    position: absolute;
-    padding-top: 300%;
-    padding-left: 350%;
-    margin-left: -20px!important;
-    margin-top: -120%;
-    opacity: .4;
-    transition: all 2s;
+.qtyContainer img{
+    height: 1.8rem;
 }
-
-.moreInfoBtn:active:after {
-    padding: 0;
-    margin: 0;
-    opacity: .2;
-    transition: 0s;
-}
-

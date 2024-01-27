@@ -29,11 +29,14 @@ export default function Navbar() {
                     </NavLink>
                 </div>
 
+
                 <div className={styles.navItemsRight}>
-                    <div className={styles.navItem}>
-                        <p>Cart</p>
-                        <img src="https://cdn-icons-png.flaticon.com/128/5952/5952750.png" alt="img" className={styles.cartImg} />
-                    </div>
+                    <NavLink to={"cart"} className={styles.navLink}>
+                        <div className={styles.navItem}>
+                            <p>Cart</p>
+                            <img src="https://cdn-icons-png.flaticon.com/128/5952/5952750.png" alt="img" className={styles.cartImg} />
+                        </div>
+                    </NavLink>
                     <div className={styles.navItem}>
                         <p>User</p>
                         <img src="https://cdn-icons-png.flaticon.com/128/5397/5397570.png" alt="img" className={styles.userImg} />
