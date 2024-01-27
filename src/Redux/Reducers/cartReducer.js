@@ -4,17 +4,13 @@ import {
   addDoc,
   collection,
   getDocs,
-  query,
-  where,
   doc,
   deleteDoc,
   updateDoc,
-  increment,
   getDoc,
 } from "firebase/firestore";
 import { db } from "../../Config.js/firebaseConfig";
 import { toast } from "react-toastify";
-const { decrement } = require("firebase/firestore");
 
 // Async Thunks
 
@@ -31,10 +27,11 @@ export const fetchCartItemsAsync = createAsyncThunk("Cart/fetch", async () => {
 // Add to cart
 export const addToCartAsync = createAsyncThunk(
   "Cart/add",
-  async (product, { getState }) => {
+  async (product, { getState, dispatch }) => {
     try {
+      dispatch(fetchCartItemsAsync());
       const state = getState();
-      const cartItems = state.cartReducer.cartItems;
+      const { cartItems } = state.cartReducer;
 
       //   Finding index if item is already there
       const existingItemIndex = cartItems.findIndex(
@@ -134,10 +131,9 @@ const cartSlice = createSlice({
   // Reducers
   reducers: {
     isItemInCart: (state, action) => {
-      const cartItem = [...state.cartItems].find(
-        (item) => item.product.id == action.payload
+      const cartItem = state.cartItems.find(
+        (item) => item.product.id === action.payload
       );
-      console.log(cartItem);
       if (cartItem) {
         state.cartItem = cartItem;
       }

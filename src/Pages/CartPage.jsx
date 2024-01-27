@@ -20,20 +20,22 @@ export default function CartPage() {
     // Returning JSX
     return (
         <>
-
             {cartLoading ? <div className={styles.loaderContainer} >
                 <HashLoader size={100} color={"#e44d26"} />
-            </div > : cartItems.length === 0 ? (
-                <>
-                    <h1 className={styles.noItemsHeading}>No items in the cart!</h1>
-                </>
-            ) : (
+            </div > :
                 <div className={styles.CartPageContainer}>
-                    {cartItems.map((item) => (
-                        <CartItem key={item.id} product={item.product} qty={item.qty} id={item.id} />
-                    ))}
+                    {/* If empty show this */}
+                    {cartItems.length === 0 ?
+                        <h1 className={styles.noItemsHeading}>No items in the cart!</h1>
+                        :
+                        <>
+                            {/* Else show cart items */}
+                            {cartItems.map((item) => (
+                                <CartItem key={item.id} product={item.product} qty={item.qty} id={item.id} />
+                            ))}
+                        </>
+                    }
                 </div>
-            )
             }
         </>
     )

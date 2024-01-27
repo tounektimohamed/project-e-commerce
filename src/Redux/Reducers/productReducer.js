@@ -23,8 +23,7 @@ export const addProductAsync = createAsyncThunk(
   "products/add",
   async ({ product }) => {
     try {
-      console.log(product);
-      const response = await fetch("https://dummyjson.com/products", {
+      const response = await fetch("https://dummyjson.com/products/add", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -34,6 +33,9 @@ export const addProductAsync = createAsyncThunk(
           description: product.description,
           price: product.price,
           rating: product.rating,
+          thumbnail: product.thumbnail,
+          category: product.category,
+          brand: product.brand
         }),
       });
 
@@ -123,6 +125,7 @@ const productSlice = createSlice({
       state.sortPrice = !state.sortPrice;
     },
     formToggle: (state, action) => {
+      console.log("called");
       state.formVisible = !state.formVisible;
       if (state.update) {
         state.update = false;
@@ -176,6 +179,7 @@ const productSlice = createSlice({
         (a, b) => parseFloat(a.price) - parseFloat(b.price)
       );
       state.sortedProducts = sortedProducts;
+      state.formVisible = false;
     });
 
     // Add Rejected

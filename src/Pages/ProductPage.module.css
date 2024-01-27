@@ -55,6 +55,7 @@
     max-width: 400px;
     border: 1px solid #ddd;
     border-radius: 5px;
+    aspect-ratio: 4/3;
 }
 
 .title {
@@ -139,3 +140,13 @@
 }
 
 
+/* Media Query for Mobile */
+@media (max-width: 768px) {
+    .imagesContainer,
+.detailsContainer{
+    width: 100%;
+}
+    .productPageContainer{
+        flex-direction: column;
+    }
+}

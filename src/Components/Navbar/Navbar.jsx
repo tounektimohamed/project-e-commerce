@@ -2,8 +2,11 @@
 // Imports
 import { NavLink, Outlet } from "react-router-dom";
 import styles from "./Navbar.module.css";
+import { formToggle } from "../../Redux/Reducers/productReducer";
+import { useDispatch } from "react-redux";
 
 export default function Navbar() {
+    const dispatch = useDispatch();
     // Returning JSX
     return (
         <>
@@ -21,12 +24,10 @@ export default function Navbar() {
                         </div>
                     </NavLink>
 
-                    <NavLink to={"add-product"} className={styles.navLink}>
-                        <div className={styles.navItem}>
-                            <p>Add a product</p>
-                            <img src="https://cdn-icons-png.flaticon.com/128/9447/9447856.png" alt="img" className={styles.AddProductImg} />
-                        </div>
-                    </NavLink>
+                    <div className={styles.navItem} onClick={() => dispatch(formToggle())}>
+                        <p>Add a product</p>
+                        <img src="https://cdn-icons-png.flaticon.com/128/9447/9447856.png" alt="img" className={styles.AddProductImg} />
+                    </div>
                 </div>
 
 

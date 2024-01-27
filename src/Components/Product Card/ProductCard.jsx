@@ -15,7 +15,7 @@ export default function Product({ product }) {
     // Actions
     const addToCart = () => {
         // Dispatching action
-        dispatch(addToCartAsync(product))
+        dispatch(addToCartAsync(product));
     }
 
     // Returning JSX
