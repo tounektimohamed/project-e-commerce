@@ -3,11 +3,22 @@
 import { NavLink, Outlet } from "react-router-dom";
 import styles from "./Navbar.module.css";
 import { formToggle } from "../../Redux/Reducers/productReducer";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { cartState, fetchCartItemsAsync } from "../../Redux/Reducers/cartReducer";
+import { useEffect } from "react";
 
 export default function Navbar() {
     // Dispatch function
     const dispatch = useDispatch();
+    // States
+    const { cartItemsCount } = useSelector(cartState);
+
+    // Side effect 
+    useEffect(() => {
+        // Fetching all cartItems to get cart items length;
+        dispatch(fetchCartItemsAsync());
+    }, [dispatch]);
+
     // Returning JSX
     return (
         <>
@@ -43,7 +54,8 @@ export default function Navbar() {
 
                     {/* Cart with Navlink */}
                     <NavLink to={"cart"} className={styles.navLink}>
-                        <div className={styles.navItem}>
+                        <div className={styles.navItem} id={styles.cartContainer}>
+                            <p className={styles.cartItemsCount}>{cartItemsCount}</p>
                             <p>Cart</p>
                             <img src="https://cdn-icons-png.flaticon.com/128/5952/5952750.png" alt="img" className={styles.cartImg} />
                         </div>

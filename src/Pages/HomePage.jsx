@@ -37,7 +37,10 @@ export default function HomePage() {
                         type="button"
                         className={styles.sortButton}
                         onClick={() => dispatch(sortProducts())}>
-                        {sortPrice ? <img className={styles.close} src="https://cdn-icons-png.flaticon.com/128/1828/1828843.png" alt="img" /> : "Sort By Price"}
+                        {sortPrice ?
+                            <img className={styles.close} src="https://cdn-icons-png.flaticon.com/128/1828/1828843.png" alt="img" />
+                            : "Sort By Price"
+                        }
                     </button>
                     {/* Rendring ProductsList component to show all products */}
                     <ProductsList />

@@ -18,6 +18,20 @@ export const fetchProductsAsync = createAsyncThunk(
   }
 );
 
+// Fetch single product
+export const getSingleProductById = createAsyncThunk(
+  "products/singleProduct",
+  async (id) => {
+    try {
+      const response = await fetch(`https://dummyjson.com/products/${id}`);
+      const product = await response.json();
+      return { product, id };
+    } catch (error) {
+      return Promise.reject(error);
+    }
+  }
+);
+
 // Add Product
 export const addProductAsync = createAsyncThunk(
   "products/add",
@@ -35,7 +49,7 @@ export const addProductAsync = createAsyncThunk(
           rating: product.rating,
           thumbnail: product.thumbnail,
           category: product.category,
-          brand: product.brand
+          brand: product.brand,
         }),
       });
 
@@ -121,7 +135,7 @@ const productSlice = createSlice({
 
   // Reducers
   reducers: {
-    // Toggling sortPrice 
+    // Toggling sortPrice
     sortProducts: (state, action) => {
       state.sortPrice = !state.sortPrice;
     },
@@ -145,12 +159,6 @@ const productSlice = createSlice({
       state.update = true;
       state.productToUpdate = action.payload;
     },
-    // Fetching product by it's id here
-    fetchProductById: (state, action) => {
-      const productId = action.payload;  // Assuming action.payload is the product ID
-      state.selectedProduct = state.products.find((product) => product.id.toString() === productId.toString());
-      state.productLoading = false;
-    },
   },
 
   // Extra Reducers
@@ -171,6 +179,22 @@ const productSlice = createSlice({
     builder.addCase(fetchProductsAsync.rejected, (state, action) => {
       // Showing notification
       toast.error("Something Went Wrong!");
+      console.log(action.error.message);
+    });
+
+    // Single product fulfilled
+    builder.addCase(getSingleProductById.fulfilled, (state, action) => {
+      state.selectedProduct = action.payload.product;
+      if (!action.payload) {
+        const productId = action.payload.id; // Assuming action.payload is the product ID
+        state.selectedProduct = state.products.find(
+          (product) => product.id.toString() === productId.toString()
+        );
+      }
+      state.productLoading = false;
+    });
+
+    builder.addCase(getSingleProductById.rejected, (state, action) => {
       console.log(action.error.message);
     });
 

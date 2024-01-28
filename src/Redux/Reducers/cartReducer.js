@@ -13,7 +13,6 @@ import { db } from "../../Config.js/firebaseConfig";
 import { toast } from "react-toastify";
 
 // Async Thunks
-
 // Fetch cart items
 export const fetchCartItemsAsync = createAsyncThunk("Cart/fetch", async () => {
   const querySnapshot = await getDocs(collection(db, "cart"));
@@ -21,6 +20,7 @@ export const fetchCartItemsAsync = createAsyncThunk("Cart/fetch", async () => {
     id: doc.id,
     ...doc.data(),
   }));
+
   return cartItems;
 });
 
@@ -124,7 +124,7 @@ export const decreaseQuantityAsync = createAsyncThunk(
 const INITIAL_STATE = {
   cartItems: [],
   cartLoading: true,
-  cartItem: null,
+  cartItemsCount: 0,
 };
 
 // Slice
@@ -133,14 +133,8 @@ const cartSlice = createSlice({
   initialState: INITIAL_STATE,
   // Reducers
   reducers: {
-    // Checking is item already in cart or not here
-    isItemInCart: (state, action) => {
-      const cartItem = state.cartItems.find(
-        (item) => item.product.id === action.payload
-      );
-      if (cartItem) {
-        state.cartItem = cartItem;
-      }
+    setCartItemsCount: (state, action) => {
+      state.cartItemsCount = action.payload;
     },
   },
 
@@ -155,6 +149,7 @@ const cartSlice = createSlice({
     // Fetch cart items fulfilled
     builder.addCase(fetchCartItemsAsync.fulfilled, (state, action) => {
       state.cartItems = action.payload;
+      state.cartItemsCount = state.cartItems.length;
       state.cartLoading = false;
     });
 
