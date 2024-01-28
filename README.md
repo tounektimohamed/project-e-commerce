@@ -1,71 +1,97 @@
-# Getting Started with Create React App
+# React E-commerce App 🛍️
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to my React E-commerce App project! This is a full-fledged online shopping experience with a dynamic product catalog, cart functionality, and more. 🚀
 
-## Available Scripts
+## Table of Contents 📚
 
-In the project directory, you can run:
+- Introduction
+- Features
+- Technologies Used
+- Project Setup
+- Usage
+- Video
+- Contributing
 
-### `npm start`
+## Introduction 🌟
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+This React E-commerce App is a showcase of a fully functional online store with a user-friendly interface. It allows users to browse products, add them to the cart, edit product details, and manage their shopping experience seamlessly.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Features ✨
 
-### `npm test`
+### Navbar:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Display cart items count dynamically.
+- Show relevant navigation links for easy navigation.
 
-### `npm run build`
+### All Products Page:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Display a list of products from the API.
+- Edit product details inline with a pencil button.
+- Delete products with a confirmation alert.
+- Implement sorting by price with a cross button to remove the sort.
+- Add products to the cart with a user-friendly button.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Create Page:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Add new products to the database with a confirmation alert.
 
-### `npm run eject`
+### Product Detail Page:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- Show comprehensive details of a selected product.
+- Add the product to the cart with a button.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Cart Page:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- Display all items in the cart.
+- Remove item from cart
+- Decrease quantity
+- Increase quantity
+- Handle errors and success alerts for a smooth user experience.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Error Handling:
 
-## Learn More
+- Efficiently handle errors from the API and display appropriate alerts.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Redux Integration:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Utilize Redux Toolkit for state management, ensuring a seamless flow of data.
 
-### Code Splitting
+### Firebase
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- Utilizing firebase firestore to add and remove cart items.
 
-### Analyzing the Bundle Size
+## Technologies Used 🛠️
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- React
+- Redux
+- React Router
+- JSON Server for creating a dummy ecommerce API
+- Firebase Firestore
+- React Loader
+- React Toastify
 
-### Making a Progressive Web App
+## Project Setup 🚧
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+1. Clone the repository:
+   git clone https://github.com/ParmodKumar28/E-Commerce-React-App
 
-### Advanced Configuration
+2. Install dependencies:
+   cd E-COMMERCE REACT APP
+   npm install
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+3. Start the React app:
+   npm start
 
-### Deployment
+4. Open http://localhost:3000 in your browser.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Usage 🚀
 
-### `npm run build` fails to minify
+Explore the products, edit them, add to the cart, and enjoy a seamless shopping experience! 🛒
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-"# E-Commerce-React-App" 
+## Video 📸
+
+https://github.com/ParmodKumar28/E-Commerce-React-App/assets/91540271/40c043b5-7d8e-4f41-88a4-dc20620da6ca
+
+## Contributing 🤝
+
+Contributions are welcome! Feel free to open issues or submit pull requests to improve the project.
