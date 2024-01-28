@@ -10,18 +10,19 @@ import { addToCartAsync } from "../../Redux/Reducers/cartReducer";
 export default function Product({ product }) {
     // States
     const [visible, setVisible] = useState(false);
+
+    // Dispatch function
     const dispatch = useDispatch();
 
     // Actions
     const addToCart = () => {
-        // Dispatching action
+        // Dispatching action to product reducer add a product to cart
         dispatch(addToCartAsync(product));
     }
 
     // Returning JSX
     return (
         <>
-
             {/* Product Container */}
             <div className={styles.productContainer} onMouseOver={() => setVisible(true)} onMouseOut={() => setVisible(false)}>
                 {/* Image */}
@@ -49,7 +50,7 @@ export default function Product({ product }) {
                 </Link>
                 {/* Add Cart Button */}
                 <button type="button" className={styles.addToCartBtn} onClick={() => addToCart()}>Add To Cart</button>
-                {/* Delete and update icons container */}
+                {/* Delete and update icons container visible only when hover on product card */}
                 {visible &&
                     <div className={styles.iconContainer}>
                         {/* Delete Icon */}
@@ -70,7 +71,6 @@ export default function Product({ product }) {
                     </div>
                 }
             </div >
-
         </>
     )
 }

@@ -121,27 +121,31 @@ const productSlice = createSlice({
 
   // Reducers
   reducers: {
+    // Toggling sortPrice 
     sortProducts: (state, action) => {
       state.sortPrice = !state.sortPrice;
     },
+    // Toggling form visible
     formToggle: (state, action) => {
-      console.log("called");
       state.formVisible = !state.formVisible;
       if (state.update) {
         state.update = false;
       }
     },
+    // Closing form by setting form visible to false
     formClose: (state, action) => {
       state.formVisible = false;
       if (state.update) {
         state.update = false;
       }
     },
+    // Setting update to true so the form visible  open to update item with item details
     setUpdate: (state, action) => {
       state.formVisible = !state.formVisible;
       state.update = true;
       state.productToUpdate = action.payload;
     },
+    // Fetching product by it's id here
     fetchProductById: (state, action) => {
       const productId = action.payload;  // Assuming action.payload is the product ID
       state.selectedProduct = state.products.find((product) => product.id.toString() === productId.toString());

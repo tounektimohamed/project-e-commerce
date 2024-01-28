@@ -33,13 +33,16 @@ export default function CartItem({ product, qty, id }) {
                 {/* Quantity Controls */}
                 <div className={styles.priceAndQtyContainer}>
                     <span className={styles.qtyContainer}>
+                        {/* Decrease Qty */}
                         <img
 
                             src="https://cdn-icons-png.flaticon.com/128/3388/3388913.png"
                             alt="Remove"
                             onClick={() => dispatch(decreaseQuantityAsync(id))}
                         />
+                        {/* Quantity */}
                         <p>{qty}</p>
+                        {/* Increase Qty */}
                         <img
 
                             src="https://cdn-icons-png.flaticon.com/128/1828/1828919.png"

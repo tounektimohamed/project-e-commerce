@@ -30,8 +30,10 @@ function App() {
   return (
     <>
       {/* Notifications Component */}
-      <ToastContainer />
+      <ToastContainer className="notification"/>
+      {/* Providing Store to all routes */}
       <Provider store={store}>
+        {/* Providing routes */}
         <RouterProvider router={router} />
       </Provider>
     </>

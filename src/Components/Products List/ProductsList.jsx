@@ -11,6 +11,7 @@ export default function ProductsList() {
 
     // Returning JSX
     return (
+        // Products list container rendring products based on if sorted price true then sorted products passed else normal products passed
         <div className={styles.productsListContainer}>
             {/* Mapping each product to the product car here */}
             {sortPrice ? sortedProducts.map((product) => (

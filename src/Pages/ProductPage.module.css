@@ -148,5 +148,9 @@
 }
     .productPageContainer{
         flex-direction: column;
+        justify-content: space-between;
+    }
+    .allPicsContainer{
+        flex-wrap: wrap;
     }
 }

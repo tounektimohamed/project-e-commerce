@@ -1,3 +1,4 @@
+// Product page to show all the product details
 // Imports
 import styles from "./ProductPage.module.css";
 import { useDispatch, useSelector } from "react-redux";
@@ -8,24 +9,29 @@ import { useEffect, useState } from "react";
 import HashLoader from "react-spinners/HashLoader";
 import { addToCartAsync, cartState } from "../Redux/Reducers/cartReducer";
 
+// Functional component for product page
 export default function ProductPage() {
     // States
-    const { id } = useParams();
-    const dispatch = useDispatch();
+    const [imageIndex, setImageIndex] = useState(0);
     const { selectedProduct, productLoading } = useSelector(productsState);
     const product = selectedProduct;
-    const [imageIndex, setImageIndex] = useState(0);
     const { cartItem } = useSelector(cartState);
     const [qty, setQty] = useState(cartItem ? cartItem.qty : 0);
 
+    // Params and dispatch function
+    const { id } = useParams();
+    const dispatch = useDispatch();
+
+
     // Side effects
     useEffect(() => {
-        // Dispatching actions
+        // Dispatching actions to productReducer to fetch product by id
         dispatch(fetchProductById(id));
     }, [id, dispatch]);
 
     // Returning JSX
     return (
+        // Product page container
         <div className={styles.productPageContainer}>
             {/* Loading Spinner */}
             {productLoading && (
@@ -43,6 +49,7 @@ export default function ProductPage() {
                     <div className={styles.imagesContainer}>
                         {product.images && (
                             <>
+                                {/* All pics */}
                                 <div className={styles.allPicsContainer}>
                                     {product.images.map((image, i) => (
                                         <img
@@ -53,6 +60,7 @@ export default function ProductPage() {
                                         />
                                     ))}
                                 </div>
+                                {/* Thumbnail or main pic which is shown */}
                                 <div className={styles.mainPicContainer}>
                                     <img src={product.images[imageIndex]} alt="main-img" />
                                 </div>
@@ -62,8 +70,11 @@ export default function ProductPage() {
 
                     {/* Details */}
                     <div className={styles.detailsContainer}>
+                        {/* Title */}
                         <h1 className={styles.title}>{product.title}</h1>
+                        {/* Brand */}
                         <p className={styles.productBrand}>{`Brand: ${product.brand}`}</p>
+                        {/* Category */}
                         <p className={styles.productCategory}>{`Category: ${product.category}`}</p>
 
                         {/* Ratings */}
@@ -79,7 +90,7 @@ export default function ProductPage() {
                         {/* Price */}
                         <h2 className={styles.price}>{` $${product.price}`}</h2>
 
-                        {/* Cart Container */}
+                        {/* Cart Container to add product to cart here */}
                         <div className={styles.cartContainer}>
                             <div className={styles.buttons}>
                                 <button type="button">

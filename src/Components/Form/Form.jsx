@@ -16,6 +16,7 @@ export default function Form() {
     const [thumbnail, setThumbnail] = useState("");
     const [brand, setBrand] = useState("");
     const [category, setCategory] = useState("");
+    // Dispatch Function
     const dispatch = useDispatch();
 
     // useEffect to update local state when productToUpdate changes
@@ -91,8 +92,11 @@ export default function Form() {
     // Returning JSX
     return (
         <>
+            {/* Overlay container to show dark effect on background when form opens */}
             <div className={styles.overlay}></div>
+            {/* Form Container */}
             <div className={styles.formContainer}>
+                {/* Form heading */}
                 <h1 style={{ color: "#3498db" }}>{update ? "Update Product" : "Add New Product"}</h1>
                 {/* Form */}
                 <form>

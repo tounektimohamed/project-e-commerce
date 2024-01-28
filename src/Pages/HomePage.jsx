@@ -11,11 +11,13 @@ import Form from "../Components/Form/Form";
 export default function HomePage() {
     // States
     const { productsLoading, formVisible, sortPrice } = useSelector(productsState);
+
+    // Dispatch function
     const dispatch = useDispatch();
 
     // Side effects
     useEffect(() => {
-        // Dispacthing async thunks
+        // Dispatching async thunks to productReducer to fetch all products when component loads
         dispatch(fetchProductsAsync());
     }, [dispatch]);
 
@@ -28,9 +30,16 @@ export default function HomePage() {
                     <HashLoader size={100} color={"#3498db"} />
                 </div> :
                 <div className={styles.homepageContainer}>
+                    {/* Conditionally showing form component when formVisible is true */}
                     {formVisible && <Form />}
                     {/* Price sorting button */}
-                    <button type="button" className={styles.sortButton} onClick={() => dispatch(sortProducts())}>{sortPrice ? <img className={styles.close} src="https://cdn-icons-png.flaticon.com/128/1828/1828843.png" alt="img" /> : "Sort By Price"}</button>
+                    <button
+                        type="button"
+                        className={styles.sortButton}
+                        onClick={() => dispatch(sortProducts())}>
+                        {sortPrice ? <img className={styles.close} src="https://cdn-icons-png.flaticon.com/128/1828/1828843.png" alt="img" /> : "Sort By Price"}
+                    </button>
+                    {/* Rendring ProductsList component to show all products */}
                     <ProductsList />
                 </div>
             }

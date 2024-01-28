@@ -29,7 +29,10 @@ export const addToCartAsync = createAsyncThunk(
   "Cart/add",
   async (product, { getState, dispatch }) => {
     try {
+      // First fetching all cart items
       dispatch(fetchCartItemsAsync());
+
+      // Getting stateto get cart Items
       const state = getState();
       const { cartItems } = state.cartReducer;
 
@@ -130,6 +133,7 @@ const cartSlice = createSlice({
   initialState: INITIAL_STATE,
   // Reducers
   reducers: {
+    // Checking is item already in cart or not here
     isItemInCart: (state, action) => {
       const cartItem = state.cartItems.find(
         (item) => item.product.id === action.payload

@@ -1,3 +1,4 @@
+// 404 Page is here to show when anything wrong happens or wrong path entered by users
 // Imports
 import styles from "./Page404.module.css";
 import { useNavigate } from "react-router-dom";
@@ -12,6 +13,7 @@ export default function Page404() {
 
   // Returning Jsx
   return (
+    // Error Container
     <div className={styles.errorContainer}>
       <div className={styles.errorContent}>
         <h1 className={styles.errorHeading}>404</h1>

@@ -43,7 +43,8 @@
   /* Style for the NavLink */
   .navLink {
     text-decoration: none;
-    color: white; 
+    color: white;
+    display: flex; 
   }
   
   .navItem:hover {
@@ -53,4 +54,20 @@
   .navLink:hover {
     color: lightgreen; 
   }
-  
+
+  @media screen and (max-width: 768px) {
+    .navbarContainer {
+        flex-direction: column;
+        padding: 10px;
+        height: auto;
+    }
+
+    .navItemsLeft, .navItemsRight {
+        width: 100%;
+        justify-content: space-around;
+    }
+
+    .navItem p {
+      font-size: small;
+    }
+}
