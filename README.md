@@ -94,4 +94,4 @@ https://github.com/ParmodKumar28/E-Commerce-React-App/assets/91540271/40c043b5-7
 
 ## Contributing 🤝
 
-Contributions are welcome! Feel free to open issues or submit pull requests to improve the project.
+Contributions are welcome! Feel free to open issues or submit pull requests to improve the project:)
