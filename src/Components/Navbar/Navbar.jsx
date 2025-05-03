@@ -5,66 +5,71 @@ import styles from "./Navbar.module.css";
 import { formToggle } from "../../Redux/Reducers/productReducer";
 import { useDispatch, useSelector } from "react-redux";
 import { cartState, fetchCartItemsAsync } from "../../Redux/Reducers/cartReducer";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function Navbar() {
     // Dispatch function
     const dispatch = useDispatch();
     // States
     const { cartItemsCount } = useSelector(cartState);
+    const [isMenuOpen, setIsMenuOpen] = useState(false); // State for hamburger menu
 
-    // Side effect 
+    // Side effect
     useEffect(() => {
         // Fetching all cartItems to get cart items length;
         dispatch(fetchCartItemsAsync());
     }, [dispatch]);
+
+    // Function to close the menu
+    const closeMenu = () => setIsMenuOpen(false);
 
     // Returning JSX
     return (
         <>
             {/* Navbar Container */}
             <div className={styles.navbarContainer}>
-
-                {/* Navbar left part items container */}
-                <div className={styles.navItemsLeft}>
-
-                    {/* Home Or Logo with Navlink */}
-                    <NavLink to={"/"} className={styles.navLink}>
-                        <div className={styles.navItem}>
-                            <p>eCommerce</p>
-                        </div>
+                {/* Logo */}
+                <div className={styles.logo}>
+                    <NavLink to={"/"} className={styles.navLink} onClick={closeMenu}>
+                        <p>eCommerce</p>
                     </NavLink>
-
-                    {/* Home Or Products with Navlink */}
-                    <NavLink to={"/"} className={styles.navLink}>
-                        <div className={styles.navItem}>
-                            <p>Products</p>
-                        </div>
-                    </NavLink>
-
-                    {/* Add to product nav item */}
-                    <div className={styles.navItem} onClick={() => dispatch(formToggle())}>
-                        <p>Add a product</p>
-                        <img src="https://cdn-icons-png.flaticon.com/128/9447/9447856.png" alt="img" className={styles.AddProductImg} />
-                    </div>
                 </div>
 
-                {/* Navbar right part items container */}
-                <div className={styles.navItemsRight}>
+                {/* Hamburger Icon */}
+                <div className={styles.hamburger} onClick={() => setIsMenuOpen(!isMenuOpen)}>
+                    <div className={styles.bar}></div>
+                    <div className={styles.bar}></div>
+                    <div className={styles.bar}></div>
+                </div>
 
-                    {/* Cart with Navlink */}
-                    <NavLink to={"cart"} className={styles.navLink}>
-                        <div className={styles.navItem} id={styles.cartContainer}>
-                            <p className={styles.cartItemsCount}>{cartItemsCount}</p>
-                            <p>Cart</p>
-                            <img src="https://cdn-icons-png.flaticon.com/128/5952/5952750.png" alt="img" className={styles.cartImg} />
+                {/* Navbar Items */}
+                <div className={`${styles.navItems} ${isMenuOpen ? styles.showMenu : ""}`}>
+                    {/* Left Items */}
+                    <div className={styles.navItemsLeft}>
+                        <NavLink to={"/"} className={styles.navLink} onClick={closeMenu}>
+                            <div className={styles.navItem}>
+                                <p>Products</p>
+                            </div>
+                        </NavLink>
+                        <div className={styles.navItem} onClick={() => { dispatch(formToggle()); closeMenu(); }}>
+                            <p>Add a product</p>
+                            <img src="https://cdn-icons-png.flaticon.com/128/9447/9447856.png" alt="Add Product" className={styles.AddProductImg} />
                         </div>
-                    </NavLink>
+                    </div>
 
-                    {/* User navitem */}
-                    <div className={styles.navItem}>
-                        <p>User</p>
-                        <img src="https://cdn-icons-png.flaticon.com/128/5397/5397570.png" alt="img" className={styles.userImg} />
+                    {/* Right Items */}
+                    <div className={styles.navItemsRight}>
+                        <NavLink to={"cart"} className={styles.navLink} onClick={closeMenu}>
+                            <div className={styles.navItem} id={styles.cartContainer}>
+                                <p className={styles.cartItemsCount}>{cartItemsCount}</p>
+                                <p>Cart</p>
+                                <img src="https://cdn-icons-png.flaticon.com/128/5952/5952750.png" alt="Cart" className={styles.cartImg} />
+                            </div>
+                        </NavLink>
+                        <div className={styles.navItem} onClick={closeMenu}>
+                            <p>User</p>
+                            <img src="https://cdn-icons-png.flaticon.com/128/5397/5397570.png" alt="User" className={styles.userImg} />
+                        </div>
                     </div>
                 </div>
             </div>
@@ -72,5 +77,5 @@ export default function Navbar() {
             {/* Rendering Children */}
             <Outlet />
         </>
-    )
+    );
 }

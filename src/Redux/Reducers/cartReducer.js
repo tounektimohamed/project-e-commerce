@@ -44,7 +44,12 @@ export const addToCartAsync = createAsyncThunk(
       //   If existing item
       if (existingItemIndex !== -1) {
         const existingItem = cartItems[existingItemIndex];
-        const updatedQty = existingItem.qty + 1;
+        let updatedQty;
+        if (product.quantity && product.quantity > 1) {
+          updatedQty = existingItem.qty + product.quantity;
+        } else {
+          updatedQty = existingItem.qty + 1;
+        }
         const itemRef = doc(collection(db, "cart"), existingItem.id);
 
         // Updating item quantity in the database
@@ -54,9 +59,14 @@ export const addToCartAsync = createAsyncThunk(
         toast.success("Quantity Increased!");
       } else {
         // If the item is not in the cart, add a new entry
+        let quantity = 1;
+        if (product.quantity && product.quantity > 1) {
+          quantity = product.quantity;
+        }
+
         await addDoc(collection(db, "cart"), {
           product,
-          qty: 1,
+          qty: quantity,
         });
         toast.success("Item Added To Cart Successfully!");
       }

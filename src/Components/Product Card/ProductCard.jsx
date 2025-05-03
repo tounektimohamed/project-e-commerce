@@ -16,61 +16,75 @@ export default function Product({ product }) {
 
     // Actions
     const addToCart = () => {
-        // Dispatching action to product reducer add a product to cart
         dispatch(addToCartAsync(product));
-    }
+    };
 
     // Returning JSX
     return (
-        <>
-            {/* Product Container */}
-            <div className={styles.productContainer} onMouseOver={() => setVisible(true)} onMouseOut={() => setVisible(false)}>
-                {/* Image */}
-                <img src={product.thumbnail} alt="img" className={styles.thumbnail} />
-                {/* Title */}
-                <h2 className={styles.heading}>{product.title}</h2>
-                {/* Description */}
-                <p className={styles.description}>{product.description}</p>
-                {/* Price */}
+        <div
+            className={styles.productContainer}
+            onMouseOver={() => setVisible(true)}
+            onMouseOut={() => setVisible(false)}
+        >
+            {/* Image */}
+            <div className={styles.imageContainer}>
+                <img src={product.thumbnail} alt="Product" className={styles.thumbnail} />
+            </div>
+
+            {/* Title */}
+            <h2 className={styles.heading}>{product.title}</h2>
+
+            {/* Description */}
+            <p className={styles.description}>{product.description}</p>
+
+            {/* Price and Ratings */}
+            <div className={styles.priceAndRating}>
                 <h2 className={styles.price}>{`$${product.price}`}</h2>
-                {/* Ratings */}
                 <ReactStars
                     count={5}
                     value={product.rating}
-                    size={24}
+                    size={20}
                     activeColor="#ffd700"
                     isHalf={true}
                     edit={false}
                 />
-                {/* More Info Button */}
+            </div>
+
+            {/* Buttons */}
+            <div className={styles.buttonContainer}>
                 <Link to={`products/${product.id}`} className={styles.link}>
                     <button type="button" className={styles.moreInfoBtn}>
                         More Info
                     </button>
                 </Link>
-                {/* Add Cart Button */}
-                <button type="button" className={styles.addToCartBtn} onClick={() => addToCart()}>Add To Cart</button>
-                {/* Delete and update icons container visible only when hover on product card */}
-                {visible &&
-                    <div className={styles.iconContainer}>
-                        {/* Delete Icon */}
-                        <img
-                            src="https://cdn-icons-png.flaticon.com/128/6460/6460112.png"
-                            alt="delete"
-                            className={styles.icon}
-                            onClick={() => dispatch(deleteProductAsync(product.id))}
-                        />
+                <button type="button" className={styles.addToCartBtn} onClick={addToCart}>
+                    Add To Cart
+                </button>
+            </div>
 
-                        {/* Update Icon */}
-                        <img
-                            src="https://cdn-icons-png.flaticon.com/128/12493/12493756.png"
-                            alt="update"
-                            className={styles.icon}
-                            onClick={() => dispatch(setUpdate(product))}
-                        />
-                    </div>
-                }
-            </div >
-        </>
-    )
+            {/* Delete and Update Icons */}
+            {visible && (
+                <div className={styles.iconContainer}>
+                    <img
+                        src="https://cdn-icons-png.flaticon.com/128/6460/6460112.png"
+                        alt="Delete"
+                        className={styles.icon}
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            dispatch(deleteProductAsync(product.id));
+                        }}
+                    />
+                    <img
+                        src="https://cdn-icons-png.flaticon.com/128/12493/12493756.png"
+                        alt="Update"
+                        className={styles.icon}
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            dispatch(setUpdate(product));
+                        }}
+                    />
+                </div>
+            )}
+        </div>
+    );
 }

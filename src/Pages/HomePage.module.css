@@ -9,7 +9,7 @@
     background-color: rgba(79, 68, 233, 0.6);
     border: 2px solid rgb(79, 68, 233);
     color: white;
-    border-radius: 16px;
+    border-radius: 8px;
     font-weight: bolder;
     transition: all 0.6s ease;
 }

@@ -5,7 +5,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.6); /* Darker overlay for better focus */
     z-index: 1;
 }
 
@@ -14,66 +14,143 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    max-width: 400px;
+    max-width: 400px; /* Adjusted width for better responsiveness */
     width: 90%;
-    padding: 2rem;
-    background-color: #fff;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
-    border-radius: 10px;
+    padding: 2rem; /* Adjusted padding */
+    background-color: #ffffff;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2); /* Stronger shadow for depth */
+    border-radius: 12px; /* Softer rounded corners */
     z-index: 2;
+    animation: fadeIn 0.3s ease-in-out; /* Smooth fade-in animation */
 }
 
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -60%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
 
 form {
-    height: 400px;
+    max-height: 400px;
     overflow-y: auto;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 1rem; /* Increased gap for better spacing */
 }
 
 form::-webkit-scrollbar {
-    width: 8px;
+    width: 6px; /* Slimmer scrollbar */
+}
+
+form::-webkit-scrollbar-thumb {
+    background-color: #3498db; /* Blue scrollbar */
+    border-radius: 4px;
 }
 
 h1 {
     margin-bottom: 1rem;
-    font-size: 1.5rem;
-    color: #3498db; /* Blue color, you can change it */
+    font-size: 1.6rem; /* Adjusted font size for better responsiveness */
+    font-weight: bold;
+    color: #2c3e50; /* Darker blue-gray color */
+    text-align: center;
 }
 
 label {
-    font-weight: bold;
-    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #34495e; /* Darker label color */
+    margin-bottom: 0.3rem;
 }
 
 input {
-    padding: 0.5rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    padding: 0.7rem; /* Adjusted padding for smaller inputs */
+    border: 1px solid #dcdcdc;
+    border-radius: 6px; /* Softer corners */
+    font-size: 0.95rem; /* Slightly smaller font size */
+    color: #2c3e50;
+    transition: border-color 0.3s ease;
+}
+
+input:focus {
+    border-color: #3498db; /* Blue border on focus */
+    outline: none;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5); /* Subtle glow effect */
 }
 
 button {
-    margin-right: 1rem;
-    padding: 0.5rem;
+    padding: 0.6rem 1rem; /* Smaller buttons */
     background-color: #3498db;
     color: #fff;
     border: none;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-    border-radius: 5px;
+    font-size: 0.9rem; /* Slightly smaller font size */
+    font-weight: bold;
+    border-radius: 6px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-right: 10px;
 }
 
 button:hover {
     background-color: #2980b9;
+    transform: translateY(-2px); /* Subtle lift effect */
+}
+
+button:active {
+    transform: translateY(0); /* Reset lift effect on click */
 }
 
 .closeBtn {
-    background-color: red;
-    width: 100px;
-    margin-top: 1.5rem; /* Increased margin */
+    background-color: #e74c3c; /* Red color for close button */
+    width: auto; /* Auto width for better responsiveness */
+    padding: 0.6rem 1rem; /* Adjusted padding */
+    font-size: 0.9rem; /* Slightly smaller font size */
+    font-weight: bold;
+    margin-top: 1rem; /* Added margin for spacing */
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .closeBtn:hover {
-    background-color: rgba(255, 0, 0, 0.803);
+    background-color: #c0392b; /* Darker red on hover */
+    transform: translateY(-2px);
+}
+
+.closeBtn:active {
+    transform: translateY(0);
+}
+
+.buttonGroup {
+    display: flex;
+    justify-content: space-between; /* Space between buttons */
+    gap: 1rem; /* Added gap for better spacing */
+    margin-top: 1rem; /* Added margin for spacing */
+}
+
+@media screen and (max-width: 768px) {
+    .formContainer {
+        max-width: 90%; /* Adjusted width for smaller screens */
+        padding: 1.5rem; /* Reduced padding */
+        margin-top: 2rem;
+    }
+
+    h1 {
+        font-size: 1.4rem; /* Smaller font size for smaller screens */
+    }
+
+    input {
+        font-size: 0.9rem; /* Adjusted input font size */
+    }
+
+    button {
+        font-size: 0.85rem; /* Smaller button font size */
+        padding: 0.5rem 0.8rem; /* Reduced padding */
+    }
+
+    .closeBtn {
+        font-size: 0.85rem; /* Smaller font size for close button */
+        padding: 0.5rem 0.8rem; /* Reduced padding */
+    }
 }

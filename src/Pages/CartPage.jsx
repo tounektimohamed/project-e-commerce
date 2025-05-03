@@ -17,7 +17,7 @@ export default function CartPage() {
     // Side effects
     useEffect(() => {
         // Dispatching action to cartReducer to fetch all cart items.
-        dispatch(fetchCartItemsAsync());
+        dispatch(fetchCartItemsAsync());   
     },);
 
     // Returning JSX

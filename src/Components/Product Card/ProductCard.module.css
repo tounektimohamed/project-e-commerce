@@ -1,84 +1,134 @@
 /* ProductCard.module.css */
 .productContainer {
     position: relative;
-    height: auto;
-    min-height: 500px;
-    width: 350px;
+    width: 320px;
     margin: 1rem;
-    box-shadow: 0px 0px 10px rgba(0,0,0,0.15);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    padding: 1rem;
-    gap: 1rem;
-    background-color: #fff;
-    border-radius: 10px;
-    transition: transform 0.2s ease;
+    background-color: #f9f9f9; /* Light background color */
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .productContainer:hover {
-    transform: scale(1.06);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.imageContainer {
+    width: 100%;
+    height: 220px; /* Slightly larger image height */
+    overflow: hidden;
+    border-bottom: 1px solid #e0e0e0; /* Subtle border color */
 }
 
 .thumbnail {
     width: 100%;
-    height: 200px;
-    max-height: 200px;
+    height: 100%;
     object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.productContainer:hover .thumbnail {
+    transform: scale(1.1);
 }
 
 .heading {
-    color: #31363D;
+    font-size: 1.3rem; /* Slightly larger font size */
+    font-weight: bold;
+    color: #2c3e50; /* Darker text color */
+    margin: 1rem 0 0.5rem;
+    text-align: center;
 }
 
 .description {
-    word-spacing: 2px;
+    font-size: 1rem; /* Slightly larger font size */
+    color: #7f8c8d; /* Muted text color */
     text-align: center;
-    color: #31363D;
-    max-height: 3.6em; /* Set the maximum height to two lines */
+    margin: 0 1rem 1rem;
+    line-height: 1.5;
+    max-height: 4.5em;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
-    -webkit-line-clamp: 2; 
+    -webkit-line-clamp: 3; /* Allow up to 3 lines */
     -webkit-box-orient: vertical;
 }
 
+.priceAndRating {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    margin: 0.5rem 0;
+}
+
 .price {
-    color: #28C8A4;
+    font-size: 1.4rem; /* Larger font size for emphasis */
+    font-weight: bold;
+    color: #16a085; /* Teal color for price */
+}
+
+.buttonContainer {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    width: 90%;
+    margin-bottom: 1rem;
+}
+
+.moreInfoBtn {
+    flex: 1;
+    background-color: #3498db; /* Blue button color */
+    color: white;
+    padding: 0.8rem 1rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.moreInfoBtn:hover {
+    background-color: #2980b9; /* Darker blue on hover */
+    transform: translateY(-2px);
 }
 
 .addToCartBtn {
-    width: 100%;
-    height: 2.6rem;
-    background-color: #28C8A4;
-    color: #fff;
+    flex: 1;
+    background-color: #1abc9c; /* Green button color */
+    color: white;
+    padding: 0.8rem 1rem;
     border: none;
+    border-radius: 6px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-    font-size: large;
-    font-weight: 700;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .addToCartBtn:hover {
-    background-color: white;
-    color: #28C8A4;
-    border: 2px solid #28C8A4;
-}
-
-.icon {
-    height: 2.6rem;
-    transition: all 0.2s ease;
+    background-color: #16a085; /* Darker green on hover */
+    transform: translateY(-2px);
 }
 
 .iconContainer {
-    display: flex;
-    justify-content: space-between;
-    width: 26%;
-    top: -20px;
     position: absolute;
-    right: 20px;
-    z-index: 1;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.icon {
+    width: 36px; /* Increased width */
+    height: 36px; /* Increased height */
+    cursor: pointer;
+    transition: transform 0.2s ease;
 }
 
 .icon:hover {
@@ -88,43 +138,3 @@
 .link {
     text-decoration: none;
 }
-
-.moreInfoBtn {
-    background-color: #4285f4;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    position: relative;
-    overflow: hidden;
-}
-
-.moreInfoBtn:hover {
-    background-color: #2d5aa5;
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-}
-
-.moreInfoBtn:after {
-    content: "";
-    background: #fff;
-    display: block;
-    position: absolute;
-    padding-top: 300%;
-    padding-left: 350%;
-    margin-left: -20px!important;
-    margin-top: -120%;
-    opacity: .4;
-    transition: all 2s;
-}
-
-.moreInfoBtn:active:after {
-    padding: 0;
-    margin: 0;
-    opacity: .2;
-    transition: 0s;
-}
-
