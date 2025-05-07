@@ -12,13 +12,14 @@ import { getFirestore } from "firebase/firestore";
 //   messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
 //   appId: process.env.REACT_APP_APP_ID,
 // };
+
 const firebaseConfig = {
-  apiKey: "AIzaSyDJlJEPXibbEdsM-0Dy_ltis3G08j_crh8",
-  authDomain: "e-comerce-5e119.firebaseapp.com",
-  projectId: "e-comerce-5e119",
-  storageBucket: "e-comerce-5e119.appspot.com",
-  messagingSenderId: "581444591910",
-  appId: "1:581444591910:web:26dff9136befe774b961e7",
+  apiKey: "AIzaSyA4FP5olTC2MjpUPe8x-_6k91fjvyBs6xo",
+  authDomain: "scoutapk.firebaseapp.com",
+  projectId: "scoutapk",
+  storageBucket: "scoutapk.firebasestorage.app",
+  messagingSenderId: "387756086923",
+  appId: "1:387756086923:web:9c556d0ebed2c636c5268e"
 };
 
 // Initialize Firebase
